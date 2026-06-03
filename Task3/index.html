@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Music Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Step 1: TensorFlow.js UMD — sets window.tf -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.21.0/dist/tf.min.js"></script>
+    <!-- Step 2: Tone.js UMD — sets window.Tone -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
+    <!-- Step 3: Magenta UMD (local copy) — reads window.tf + window.Tone, sets self.index -->
+    <script src="/magenta.js"></script>
+    <!-- Step 4: Expose as window.mm -->
+    <script>
+      window.mm = self.index || window.index || {};
+      console.log('[Magenta] window.mm loaded:', Object.keys(window.mm).slice(0, 10));
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
